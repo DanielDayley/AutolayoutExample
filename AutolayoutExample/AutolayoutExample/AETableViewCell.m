@@ -16,25 +16,34 @@ static const CGFloat margin = 10.0;
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     self.photoButton = [UIButton new];
-    self.photoButton.frame = CGRectMake(margin, 6, 48, 48);
+//    self.photoButton.frame = CGRectMake(margin, 6, 48, 48);
     [self.photoButton setTitle:@"Add" forState:UIControlStateNormal];
     [self.photoButton setTintColor:[UIColor whiteColor]];
     [self.photoButton setBackgroundColor:[UIColor blueColor]];
     [self.contentView addSubview:self.photoButton];
     
     self.nameField = [UITextField new];
-    self.nameField.frame = CGRectMake(margin + 48 + margin, 6, 125, 48);
+//    self.nameField.frame = CGRectMake(margin + 48 + margin, 6, 125, 48);
     self.nameField.borderStyle = UITextBorderStyleRoundedRect;
     [self.contentView addSubview:self.nameField];
     
     self.scoreField = [UITextField new];
-    self.scoreField.frame = CGRectMake(margin + 48 + margin + 125 + margin, 6, 55, 48);
+//    self.scoreField.frame = CGRectMake(margin + 48 + margin + 125 + margin, 6, 55, 48);
     self.scoreField.borderStyle = UITextBorderStyleRoundedRect;
     [self.contentView addSubview:self.scoreField];
     
     self.scoreStepper = [UIStepper new];
-    self.scoreStepper.frame = CGRectMake(margin + 48 + margin + 125 + margin + 55 + margin, 15, 0, 0);
+//    self.scoreStepper.frame = CGRectMake(margin + 48 + margin + 125 + margin + 55 + margin, 15, 0, 0);
     [self.contentView addSubview:self.scoreStepper];
+    
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_photoButton,_nameField,_scoreField,_scoreStepper);
+    
+    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_photoButton]-[_nameField]-[_scoreField]-[_scoreStepper]-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:viewsDictionary];
+    
+    [self.contentView addConstraints:constraints];
+    
+    
+    
     
     return self;
 }
