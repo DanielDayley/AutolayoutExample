@@ -36,9 +36,16 @@ static const CGFloat margin = 10.0;
 //    self.scoreStepper.frame = CGRectMake(margin + 48 + margin + 125 + margin + 55 + margin, 15, 0, 0);
     [self.contentView addSubview:self.scoreStepper];
     
+    // CONSTRAINTS
+    
+    [self.photoButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.nameField setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.scoreField setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.scoreStepper setTranslatesAutoresizingMaskIntoConstraints:NO];
+
     NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_photoButton,_nameField,_scoreField,_scoreStepper);
     
-    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_photoButton]-[_nameField]-[_scoreField]-[_scoreStepper]-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:viewsDictionary];
+    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_photoButton]-[_nameField(>=95)]-[_scoreField(>=40)]-(>=8)-[_scoreStepper]-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:viewsDictionary];
     
     [self.contentView addConstraints:constraints];
     
