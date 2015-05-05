@@ -45,13 +45,30 @@ static const CGFloat margin = 10.0;
 
     NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(_photoButton,_nameField,_scoreField,_scoreStepper);
     
+    // The visual format of setting restraints.
+    
     NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_photoButton]-[_nameField(>=95)]-[_scoreField(>=40)]-(>=8)-[_scoreStepper]-|" options:NSLayoutFormatAlignAllCenterY metrics:nil views:viewsDictionary];
     
     [self.contentView addConstraints:constraints];
     
+    //Apple's base-API way of adding restraints
     
+    NSLayoutConstraint *actualScoreCenterConstraint = [NSLayoutConstraint
+                                                       constraintWithItem:_scoreField
+                                                       attribute:NSLayoutAttributeCenterX
+                                                       relatedBy:NSLayoutRelationEqual
+                                                       toItem:self.contentView
+                                                       attribute:NSLayoutAttributeCenterX
+                                                       multiplier:1.0
+                                                       constant:0];
+    actualScoreCenterConstraint.priority = UILayoutPriorityDefaultHigh;
+    [self.contentView addConstraint:actualScoreCenterConstraint];
+
     
-    
+    // since we've already rendered constraints, we can reuse that variable:
+    constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_photoButton]-|" options:0 metrics: nil views:viewsDictionary];
+        [self.contentView addConstraints:constraints];
+
     return self;
 }
 
