@@ -1,6 +1,7 @@
 AutolayoutExample
 =================
 
+<<<<<<< HEAD
 A quick example project to demonstrate auto layout with Objective-C.
 
 #### Background/Resource
@@ -25,12 +26,15 @@ There are three problems that can occur with auto layout, and they are almost al
 This example will focus on demonstrating how to use auto layout exclusively in code. Each branch represents a step in the process and includes the code needed to complete the step, which has been commented out. The master branch is the same as the solution branch, and includes the working code.
 
 # Branches (steps)
+=======
+>>>>>>> initial
 ## initial
 ### Description
 A simple table with custom cells, laid out using frames.
 
 ### Problems Remaining
 Cells do not adjust to landscape view, and content is pushed off screen when editing.
+<<<<<<< HEAD
 
 ## step1
 ### Actions
@@ -179,3 +183,5 @@ Define the width of `_photoButton` to correct the aspect ratio and define all co
 ## solution
 ### Description
 All layout concerns have been resolved. Content adjusts to rotation, even when the cell height gets smaller in landscape mode. Content also adjusts properly when editing the table.
+=======
+>>>>>>> initial
